@@ -1,0 +1,54 @@
+{
+  "name": "hpbuysell_edilookup",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.16.1",
+    "@cap-js/postgres": "^3.1.1",
+    "@sap/cds": "^10",
+    "@sap/cds-dk": "^10.1.1",
+    "@sap/xssec": "^4.15.0",
+    "passport": "^0.7.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^3",
+    "@sap/cds-dk": "^10",
+    "cds-plugin-ui5": "^0.17.0"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "postgres",
+        "credentials": {
+          "url": "postgres://44a63f735c23:034f5baface0d47cd03952b5183b1e6@localhost:33360/MqRFhFvoDLkp?schema=hpbuysell_edilookup",
+          "schema": "hpbuysell_edilookup",
+          "ssl": {
+            "rejectUnauthorized": false
+          }
+        }
+      },
+      "auth": {
+        "[development]": {
+          "kind": "mocked",
+          "users": {
+            "admin": {
+              "roles": ["Admin"]
+            },
+            "viewer": {
+              "roles": ["Viewer"]
+            }
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-edilookup": "cds watch --open com.hp.buysell.edilookup/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ]
+}

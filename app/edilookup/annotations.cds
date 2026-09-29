@@ -1,0 +1,1 @@
+using EDILookupService as service from '../../srv/service';

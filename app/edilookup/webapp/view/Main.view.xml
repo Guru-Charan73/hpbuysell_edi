@@ -1,0 +1,131 @@
+<mvc:View
+    controllerName="com.hp.buysell.edilookup.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable">
+
+    <Page id="page" title="EDI Lookup Dashboard">
+        <headerContent>
+            <Button id="btnUpload" text="Upload Excel" icon="sap-icon://upload" press=".onUploadExcel" type="Emphasized"/>
+            <Button id="btnDownload" text="Download Excel" icon="sap-icon://download" press=".onDownloadExcel" />
+        </headerContent>
+
+        <content>
+            <IconTabBar id="idIconTabBar" expanded="true" class="sapUiResponsiveContentPadding">
+                <items>
+                    
+                    <!-- Tab 1: MESCODMESFCT -->
+                    <IconTabFilter id="tabMescod" text="MESCOD MESFCT" key="mescod">
+                        <smartFilterBar:SmartFilterBar id="smartFilterBarMescod" entitySet="MESCODMESFCT" persistencyKey="SmartFilterPKey_Mescod">
+                            <smartFilterBar:controlConfiguration>
+                                <smartFilterBar:ControlConfiguration key="isa05Isa06" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="isa07Isa08" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="gs02" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="gs03" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="st01" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="gs08" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="partnNumber" visibleInAdvancedArea="true" />
+                            </smartFilterBar:controlConfiguration>
+                        </smartFilterBar:SmartFilterBar>
+                        <smartTable:SmartTable id="smartTableMescod" entitySet="MESCODMESFCT" smartFilterId="smartFilterBarMescod" tableType="ResponsiveTable" enableExport="true" useVariantManagement="false" useTablePersonalisation="true" header="MESCOD Data" showRowCount="true" enableAutoBinding="true" class="sapUiSmallMarginTop" initiallyVisibleFields="isa05Isa06,isa07Isa08,gs02,gs03,st01,gs08,partnNumber,companyCodeName,existingE1edka1Re,reMapValueOfE1edka1ReName1,mescod,mesfct,oldSystem,companyCode" />
+                    </IconTabFilter>
+
+                    <!-- Tab 2: ShipToIDProject -->
+                    <IconTabFilter id="tabShipTo" text="Ship To ID Project" key="shipto">
+                        <smartFilterBar:SmartFilterBar id="smartFilterBarShipTo" entitySet="ShipToIDProject" persistencyKey="SmartFilterPKey_ShipTo">
+                            <smartFilterBar:controlConfiguration>
+                                <smartFilterBar:ControlConfiguration key="soldToId" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="shipToCodeInEdiMessage" visibleInAdvancedArea="true" />
+                            </smartFilterBar:controlConfiguration>
+                        </smartFilterBar:SmartFilterBar>
+                        <smartTable:SmartTable id="smartTableShipTo" entitySet="ShipToIDProject" smartFilterId="smartFilterBarShipTo" tableType="ResponsiveTable" enableExport="true" useVariantManagement="false" useTablePersonalisation="true" header="Ship To Data" showRowCount="true" enableAutoBinding="true" class="sapUiSmallMarginTop" initiallyVisibleFields="soldToId,soldToName,shipToCodeInEdiMessage,sapShipToCode,wbs" />
+                    </IconTabFilter>
+
+                    <!-- Tab 3: EDIOFF -->
+                    <IconTabFilter id="tabEdioff" text="EDI OFF" key="edioff">
+                        <smartFilterBar:SmartFilterBar id="smartFilterBarEdioff" entitySet="EDIOFF" persistencyKey="SmartFilterPKey_Edioff">
+                            <smartFilterBar:controlConfiguration>
+                                <smartFilterBar:ControlConfiguration key="ediFormat" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="messageId" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="direction" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="bpIdLegacy" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="companyCode" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="projectId" visibleInAdvancedArea="true" />
+                            </smartFilterBar:controlConfiguration>
+                        </smartFilterBar:SmartFilterBar>
+                        <smartTable:SmartTable id="smartTableEdioff" entitySet="EDIOFF" smartFilterId="smartFilterBarEdioff" tableType="ResponsiveTable" enableExport="true" useVariantManagement="false" useTablePersonalisation="true" header="EDI OFF Data" showRowCount="true" enableAutoBinding="true" class="sapUiSmallMarginTop" initiallyVisibleFields="ediFormat,messageId,direction,bpIdLegacy,companyCode,projectId,routingAction" />
+                    </IconTabFilter>
+
+                    <!-- Tab 4: Redirect -->
+                    <IconTabFilter id="tabRedirect" text="Redirect" key="redirect">
+                        <smartFilterBar:SmartFilterBar id="smartFilterBarRedirect" entitySet="Redirect" persistencyKey="SmartFilterPKey_Redirect">
+                            <smartFilterBar:controlConfiguration>
+                                <smartFilterBar:ControlConfiguration key="ediFormat" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="messageId" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="direction" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="bpIdLegacy" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="companyCode" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="projectId" visibleInAdvancedArea="true" />
+                            </smartFilterBar:controlConfiguration>
+                        </smartFilterBar:SmartFilterBar>
+                        <smartTable:SmartTable id="smartTableRedirect" entitySet="Redirect" smartFilterId="smartFilterBarRedirect" tableType="ResponsiveTable" enableExport="true" useVariantManagement="false" useTablePersonalisation="true" header="Redirect Data" showRowCount="true" enableAutoBinding="true" class="sapUiSmallMarginTop" initiallyVisibleFields="ediFormat,messageId,direction,bpIdLegacy,companyCode,projectId,routingAction,networkAddress,isa05Isa06,isa07Isa08,gs02,gs03,dataElementDelimiter,dataSubelementDelimiter,segmentDelimiter" />
+                    </IconTabFilter>
+
+                    <!-- Tab 5: EDI810OUT -->
+                    <IconTabFilter id="tabEdi810" text="EDI 810 OUT" key="edi810">
+                        <smartFilterBar:SmartFilterBar id="smartFilterBarEdi810" entitySet="EDI810OUT" persistencyKey="SmartFilterPKey_Edi810">
+                            <smartFilterBar:controlConfiguration>
+                                <smartFilterBar:ControlConfiguration key="ediType" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="companyCode" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="plant" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="qualf" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="idocSegment" visibleInAdvancedArea="true" />
+                            </smartFilterBar:controlConfiguration>
+                        </smartFilterBar:SmartFilterBar>
+                        <smartTable:SmartTable id="smartTableEdi810" entitySet="EDI810OUT" smartFilterId="smartFilterBarEdi810" tableType="ResponsiveTable" enableExport="true" useVariantManagement="false" useTablePersonalisation="true" header="EDI 810 OUT Data" showRowCount="true" enableAutoBinding="true" class="sapUiSmallMarginTop" initiallyVisibleFields="ediType,companyCode,plant,ediCode,qualf,value,idocSegment" />
+                    </IconTabFilter>
+
+                    <!-- Tab 6: EMSContainer -->
+                    <IconTabFilter id="tabEms" text="EMS Container" key="ems">
+                        <smartFilterBar:SmartFilterBar id="smartFilterBarEms" entitySet="EMSContainer" persistencyKey="SmartFilterPKey_Ems">
+                            <smartFilterBar:controlConfiguration>
+                                <smartFilterBar:ControlConfiguration key="recordType" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="region" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="startDate" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="endDate" visibleInAdvancedArea="true" />
+                            </smartFilterBar:controlConfiguration>
+                        </smartFilterBar:SmartFilterBar>
+                        <smartTable:SmartTable id="smartTableEms" entitySet="EMSContainer" smartFilterId="smartFilterBarEms" tableType="ResponsiveTable" enableExport="true" useVariantManagement="false" useTablePersonalisation="true" header="EMS Container Data" showRowCount="true" enableAutoBinding="true" class="sapUiSmallMarginTop" initiallyVisibleFields="recordType,region,startDate,endDate,containerId" />
+                    </IconTabFilter>
+
+                    <!-- Tab 7: EDI856DatesMapping -->
+                    <IconTabFilter id="tabEdi856" text="EDI 856 Dates Mapping" key="edi856">
+                        <smartFilterBar:SmartFilterBar id="smartFilterBarEdi856" entitySet="EDI856DatesMapping" persistencyKey="SmartFilterPKey_Edi856">
+                            <smartFilterBar:controlConfiguration>
+                                <smartFilterBar:ControlConfiguration key="partnerCode" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="poBusinessModel" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="incotermCodePo" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="incotermCodeSo" visibleInAdvancedArea="true" />
+                            </smartFilterBar:controlConfiguration>
+                        </smartFilterBar:SmartFilterBar>
+                        <smartTable:SmartTable id="smartTableEdi856" entitySet="EDI856DatesMapping" smartFilterId="smartFilterBarEdi856" tableType="ResponsiveTable" enableExport="true" useVariantManagement="false" useTablePersonalisation="true" header="EDI 856 Dates Data" showRowCount="true" enableAutoBinding="true" class="sapUiSmallMarginTop" initiallyVisibleFields="partnerCode,poBusinessModel,incotermCodePo,incotermCodeSo,uiSupplierShipDate,uiSupplierDeliveryDate,uiHpShipDate,uiHpDeliveryDate" />
+                    </IconTabFilter>
+
+                    <!-- Tab 8: CarrierCodes850 -->
+                    <IconTabFilter id="tabCarrier" text="Carrier Codes 850" key="carrier">
+                        <smartFilterBar:SmartFilterBar id="smartFilterBarCarrier" entitySet="CarrierCodes850" persistencyKey="SmartFilterPKey_Carrier">
+                            <smartFilterBar:controlConfiguration>
+                                <smartFilterBar:ControlConfiguration key="supplierIdInUiPo" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="carrierCodeInUiPo" visibleInAdvancedArea="true" />
+                                <smartFilterBar:ControlConfiguration key="poSeriesBeginWith" visibleInAdvancedArea="true" />
+                            </smartFilterBar:controlConfiguration>
+                        </smartFilterBar:SmartFilterBar>
+                        <smartTable:SmartTable id="smartTableCarrier" entitySet="CarrierCodes850" smartFilterId="smartFilterBarCarrier" tableType="ResponsiveTable" enableExport="true" useVariantManagement="false" useTablePersonalisation="true" header="Carrier Codes Data" showRowCount="true" enableAutoBinding="true" class="sapUiSmallMarginTop" initiallyVisibleFields="supplierIdInUiPo,carrierCodeInUiPo,poSeriesBeginWith,ediCarrierCode,description" />
+                    </IconTabFilter>
+
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>
